@@ -1,0 +1,14 @@
+grep -c '\(?$\)\|\(!$\)'  text.txt
+grep '^«' text.txt
+grep '' text.txt | sort
+grep -w -c '\(\bМаш[аиуе]\b\)\|\(\bМашей\b\)' text.txt
+
+sed -n '/^«/p' text2.txt
+sed 's/\(.\)*\(\bМаш[аиуе]\b\)\(.\)*\|\(.\)*\(\bМашей\b\)\(.\)*/Маша/' text2.txt
+sed 'y/абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ/яабвгдеёжзийклмнопрстуфхцчшщъыьэюЯАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮ/' text2.txt
+sed '/!$/a\!!!' text2.txt 
+
+ls| awk 'BEGIN {FS = "_"} {if ($2 == "10.10.2006"){ print $1}}'
+awk 'BEGIN{FS=" ";sum=0}{sum +=$NF * $(NF-1)}END{printf "В магазине ЦУМ 10.10.2006 было совершено покупок на сумму " sum " рублей\n"}' ЦУМ_10.10.2006
+ls| awk 'BEGIN{FS = "_"}{if ($1 == "Гостиный Двор"){print $2}}'
+awk 'BEGIN{FS=" "} {if ($1=="Куртка") {m = substr(FILENAME,0,index(FILENAME,"_"));mm[m] = 1}} END{count=0;for(k in mm) {count+=1};print count}' *_*
