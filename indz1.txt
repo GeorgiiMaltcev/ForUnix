@@ -1,4 +1,4 @@
-grep -c '\(?$\)\|\(!$\)'  text.txt
+grep -c '?$\|!$'  text.txt
 grep '^«' text.txt
 grep '' text.txt | sort
 grep -w -c '\(\bМаш[аиуе]\b\)\|\(\bМашей\b\)' text.txt
